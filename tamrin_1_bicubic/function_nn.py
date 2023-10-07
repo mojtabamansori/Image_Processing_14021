@@ -11,7 +11,7 @@ import math
 
 
 def upscale_nearest_neighbor(image, scale_factor):
-    print('nn is run')
+    print('nn is run', end='')
     new_height = int(image.shape[0] * scale_factor)
     new_width = int(image.shape[1] * scale_factor)
 
@@ -25,5 +25,5 @@ def upscale_nearest_neighbor(image, scale_factor):
             orig_i = int(i * h_ratio)
             orig_j = int(j * w_ratio)
             upscaled_image[i, j, :] = image[orig_i, orig_j, :]
-    print('nn is done')
+    print('\rnn is done')
     return upscaled_image

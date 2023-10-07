@@ -24,7 +24,7 @@ new_y = int(original_image.shape[1]) * upscale_factor
 up_scaled_data_cubic = bicubic_interpolation(original_image, (new_x,new_y))
 up_scaled_data_nn = upscale_nearest_neighbor(original_image, upscale_factor)
 up_scaled_data_linear = bilinear_interpolation(original_image, upscale_factor)
-rotate_image = rotate_bicubic(original_image, rotate_bicubic)
+rotate_image = rotate_bicubic(original_image, angle)
 
 # save section
 cv2.imwrite(f"original_image.jpg", original_image)

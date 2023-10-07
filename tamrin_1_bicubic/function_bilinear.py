@@ -11,7 +11,7 @@ import math
 
 
 def bilinear_interpolation(image, scale_factor):
-    print('bilinear is run')
+    print('bilinear is run',end='')
     # بررسی اعتبار ورودی‌ها
     if scale_factor <= 0:
         raise ValueError("مقیاس باید بزرگتر از صفر باشد.")
@@ -49,5 +49,5 @@ def bilinear_interpolation(image, scale_factor):
             )
 
             upscaled_image[i, j, :] = interpolated_pixel.astype(np.uint8)
-    print('bilinear is done')
+    print('\rbilinear is done')
     return upscaled_image

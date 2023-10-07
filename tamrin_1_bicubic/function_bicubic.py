@@ -55,7 +55,7 @@ def bicubic_interpolation(image, new_shape):
                 interpolated_pixel[c] = np.clip(int(channel_value), 0, 255)
 
             output_image[i, j] = interpolated_pixel
-    print('\rbicubic is done')
+    print('\rbicubic is done \n')
     return output_image
 
 

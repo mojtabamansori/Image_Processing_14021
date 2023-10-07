@@ -25,5 +25,5 @@ def upscale_nearest_neighbor(image, scale_factor):
             orig_i = int(i * h_ratio)
             orig_j = int(j * w_ratio)
             upscaled_image[i, j, :] = image[orig_i, orig_j, :]
-    print('\rnn is done')
+    print('\rnn is done\n')
     return upscaled_image

@@ -22,7 +22,7 @@ def rotate_bicubic(image, angle):
     center_y = height / 2
 
     for i in range(height):
-        print(f'\rrun bicubic: [{i}/{height}]', end='')
+        print(f'\rrun rotation: [{i}/{height}]', end='')
         for j in range(width):
             # Calculate the new coordinates after rotation.
             x = j - center_x
@@ -50,7 +50,7 @@ def rotate_bicubic(image, angle):
                     interpolated_pixel[c] = np.clip(int(channel_value), 0, 255)
 
                 rotated_image[i, j] = interpolated_pixel
-    print('\rrotate bi cubic is run ')
+    print('\rrotate bi cubic is done \n')
     return rotated_image
 
 # تابع بای‌کیوبیکی ارائه شده توسط شما

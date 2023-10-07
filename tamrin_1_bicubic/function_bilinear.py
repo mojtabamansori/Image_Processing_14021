@@ -49,5 +49,5 @@ def bilinear_interpolation(image, scale_factor):
             )
 
             upscaled_image[i, j, :] = interpolated_pixel.astype(np.uint8)
-    print('\rbilinear is done')
+    print('\rbilinear is done\n')
     return upscaled_image

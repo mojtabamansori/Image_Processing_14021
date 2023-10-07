@@ -16,7 +16,7 @@ from function_bicubic_rotation import rotate_bicubic
 # data section
 original_image = np.array(cv2.imread("test_images/cameraman.tif"))
 upscale_factor = 2
-angle = 45
+angle = 135
 new_x = int(original_image.shape[0]) * upscale_factor
 new_y = int(original_image.shape[1]) * upscale_factor
 
@@ -28,14 +28,14 @@ rotate_image = rotate_bicubic(original_image, angle)
 
 # save section
 cv2.imwrite(f"original_image.jpg", original_image)
-cv2.imwrite(f"up_scaled_image_bicubic_{shape_scale}.jpg", up_scaled_data_cubic)
-cv2.imwrite(f"up_scaled_image_nn_{shape_scale}.jpg", up_scaled_data_nn)
-cv2.imwrite(f"up_scaled_image_linear_{shape_scale}.jpg", up_scaled_data_linear)
-cv2.imwrite(f"rotate_image_{rotate_bicubic}.jpg", rotate_image)
+cv2.imwrite(f"up_scaled_image_bicubic_{new_x}.jpg", up_scaled_data_cubic)
+cv2.imwrite(f"up_scaled_image_nn_{new_x}.jpg", up_scaled_data_nn)
+cv2.imwrite(f"up_scaled_image_linear_{new_x}.jpg", up_scaled_data_linear)
+cv2.imwrite(f"rotate_image_{angle}.jpg", rotate_image)
 
 
 # plot section
-fig, ax = plt.subplots(nrows=3, ncols=2, figsize=(10, 10), sharex=True, sharey=True)
+fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(10, 10), sharex=True, sharey=True)
 ax[0, 0].imshow(original_image, cmap='gray', vmin=0, vmax=255)
 ax[0, 0].set_title('Original Image')
 ax[0, 1].imshow(up_scaled_data_linear, cmap='gray', vmin=0, vmax=255)
@@ -44,8 +44,9 @@ ax[1, 0].imshow(up_scaled_data_nn, cmap='gray', vmin=0, vmax=255)
 ax[1, 0].set_title(f'Up_scaled Image, nn')
 ax[1, 1].imshow(up_scaled_data_cubic, cmap='gray', vmin=0, vmax=255)
 ax[1, 1].set_title(f'Up_scaled Image, Bi-cubic')
-ax[2, 0].imshow(rotate_image, cmap='gray', vmin=0, vmax=255)
-ax[2, 0].set_title(f'Up_scaled Image, rotate_image')
-fig.delaxes(ax[2, 1])
-plt.tight_layout()
+plt.show()
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10, 10), sharex=True, sharey=True)
+ax.imshow(rotate_image, cmap='gray', vmin=0, vmax=255)
+ax.set_title(f'Rotated Image')  # عنوان شکل دوم
 plt.show()

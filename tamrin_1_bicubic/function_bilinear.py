@@ -12,22 +12,15 @@ import math
 
 def bilinear_interpolation(image, scale_factor):
     print('bilinear is run',end='')
-    # بررسی اعتبار ورودی‌ها
-    if scale_factor <= 0:
-        raise ValueError("مقیاس باید بزرگتر از صفر باشد.")
 
-    # محاسبه ابعاد جدید تصویر
     new_height = int(image.shape[0] * scale_factor)
     new_width = int(image.shape[1] * scale_factor)
 
-    # ایجاد یک ماتریس خروجی جدید با ابعاد جدید
     upscaled_image = np.zeros((new_height, new_width, image.shape[2]), dtype=np.uint8)
 
-    # محاسبه نسبت اندازه قدیمی به جدید
     h_ratio = 1 / scale_factor
     w_ratio = 1 / scale_factor
 
-    # پیمایش تمام پیکسل‌های تصویر جدید و مقداردهی آن‌ها با استفاده از انترپولیشن Bilinear
     for i in range(new_height):
         for j in range(new_width):
             orig_i = i * h_ratio
@@ -36,13 +29,11 @@ def bilinear_interpolation(image, scale_factor):
             i0, j0 = int(orig_i), int(orig_j)
             i1, j1 = min(i0 + 1, image.shape[0] - 1), min(j0 + 1, image.shape[1] - 1)
 
-            # محاسبه وزن‌ها برای پیکسل‌های همسایه
             weight_i0 = orig_i - i0
             weight_i1 = 1 - weight_i0
             weight_j0 = orig_j - j0
             weight_j1 = 1 - weight_j0
 
-            # انترپولیشن Bilinear
             interpolated_pixel = (
                     weight_i1 * (weight_j1 * image[i0, j0, :] + weight_j0 * image[i0, j1, :]) +
                     weight_i0 * (weight_j1 * image[i1, j0, :] + weight_j0 * image[i1, j1, :])

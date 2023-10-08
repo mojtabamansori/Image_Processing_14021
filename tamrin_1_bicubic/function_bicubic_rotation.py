@@ -53,7 +53,6 @@ def rotate_bicubic(image, angle):
     print('\rrotate bi cubic is done \n')
     return rotated_image
 
-# تابع بای‌کیوبیکی ارائه شده توسط شما
 def bicubic_kernel(x):
     x = abs(x)
     if 0 <= x < 1:

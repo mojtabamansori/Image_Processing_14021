@@ -15,10 +15,10 @@ from function_bicubic_rotation import rotate_bicubic
 
 # data section
 original_image = np.array(cv2.imread("test_images/cameraman.tif"))
-upscale_factor = 2
+upscale_factor = 1.005
 angle = 135
-new_x = int(original_image.shape[0]) * upscale_factor
-new_y = int(original_image.shape[1]) * upscale_factor
+new_x = int(int(original_image.shape[0]) * upscale_factor)
+new_y = int(int(original_image.shape[1]) * upscale_factor)
 
 # up_sample section
 up_scaled_data_cubic = bicubic_interpolation(original_image, (new_x,new_y))
